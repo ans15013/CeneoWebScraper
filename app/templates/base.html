@@ -33,23 +33,25 @@
             </div>
         </div>
     </nav>
-    <section class="container my-5">
-        <h2>Opis projektu</h2>
-        <p>Ta aplikacja umożliwia pobieranie opinii o produktach z serwisu Ceneo.pl na podstawie identyfikatora produktu.</p>
-
-        <h3>Cel aplikacji</h3>
-        <p>Zautomatyzowanie procesu zbierania opinii w celu ich dalszej analizy lub prezentacji.</p>
-
-        <h3>Opis działania</h3>
-        <p>Podaj identyfikator produktu, a aplikacja pobierze opinie i zapisze je w formacie JSON, CSV oraz w bazie danych.</p>
-
-        <h3>Zastosowane podejścia</h3>
-        <p>Aplikacja została zbudowana z wykorzystaniem frameworka Flask.</p>
+    <section class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col text-center">
+                <h2>
+                    {% block title %}
+                    {% endblock %}
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
     </section>
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2025 Ceneo Web Scraper</p>
+
+    <footer class="container bg-dark text-light fixed-bottom text-center">
+        <p>Paweł Marek, Akademia Nauk Stosowanych w Nowym Targu</p>
     </footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
 </html>
