@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}
+Lista Produktów
+{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Produktów</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Kod</th>
+                <th>Produkt</th>
+                <th>Liczba opinii</th>
+                <th>Liczba zalet</th>
+                <th>Liczba wad</th>
+                <th>Średnia ocena</th>
+                <th>Pobierz opinie</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href='#'> 108481121 </a>
+                </td>
+                <td><a href=>Urządzenie wielofunkcyjne HP Envy 6020e AiO HP+ Instant Ink (223N4B)</a></td>
+                <td>55</td>
+                <td>37</td>
+                <td>1</td>
+                <td>4.62</td>
+                <td>
+                    <a href="opinie/produkt1.csv">CSV</a> |
+                    <a href="opinie/produkt1.xlsx">XLSX</a> |
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='#'> 108481121 </a>
+                </td>
+                <td><a href=>Urządzenie wielofunkcyjne HP Envy 6020e AiO HP+ Instant Ink (223N4B)</a></td>
+                <td>55</td>
+                <td>37</td>
+                <td>1</td>
+                <td>4.62</td>
+                <td>
+                    <a href="opinie/produkt2.csv">CSV</a> |
+                    <a href="opinie/produkt2.xlsx">XLSX</a> |
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='#'> 108481121 </a>
+                </td>
+                <td><a href=>Urządzenie wielofunkcyjne HP Envy 6020e AiO HP+ Instant Ink (223N4B)</a></td>
+                <td>55</td>
+                <td>37</td>
+                <td>1</td>
+                <td>4.62</td>
+                <td>
+                    <a href="opinie/produkt3.csv">CSV</a> |
+                    <a href="opinie/produkt3.xlsx">XLSX</a> |
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock %}
+[09:21]
+products.html
