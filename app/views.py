@@ -1,7 +1,11 @@
 import os
 import json
+import pandas as pd
 from app import app
 from flask import render_template, redirect, url_for, request
+
+def list_to_html(l):
+    return "<ul>"+"".join([f"<li>{e}</li>" for e in l])+"</ul>" if l else ""
 
 @app.route('/')
 def index():
@@ -30,20 +34,16 @@ def products():
 def author():
     return render_template("author.html")
 
-@app.route('/product/<product_id>')
-def product(product_id):
-    product_path = os.path.join("./app/data/products", f"{product_id}.json")
-    if not os.path.exists(product_path):
-        return f"Produkt o ID {product_id} nie istnieje.", 404
-    with open(product_path, "r", encoding="utf-8") as f:
-        product_data = json.load(f)
-    opinions_path = os.path.join("./app/data/opinions", f"{product_id}.json")
-    if os.path.exists(opinions_path):
-        with open(opinions_path, "r", encoding="utf-8") as f:
-            opinions_data = json.load(f)
-    else:
-        opinions_data = []
-    return render_template("product.html", product=product_data, opinions=opinions_data)
-@app.route('/')
-def base():
-    return render_template("base.html")
+@app.route('/product/<int:product_id>')
+def product(product_id:int):
+    with open(f"./app/data/opinions/{product_id}.json", "r", encoding="UTF-8") as jf:
+        try:
+            opinions = json.load(jf)
+        except json.JSONDecodeError:
+            error = "Dla produktu o podanym id nie pobrano jeszcze opinii"
+            return render_template("product.html", error=error)
+    opinions = pd.DataFrame.from_dict(opinions)
+    opinions.pros = opinions.pros.apply(list_to_html)
+    opinions.cons = opinions.pros.apply(list_to_html)
+
+    return render_template("product.html", opinions= opinions.to_html(classes="table table-hover tabel-bordered table-striped", index=False))

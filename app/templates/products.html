@@ -40,51 +40,23 @@ Lista Produktów
             </tr>
         </thead>
         <tbody>
+            {% for product in products %}
             <tr>
                 <td>
-                    <a href='#'> 108481121 </a>
+                    <a href="{{ url_for('product', product_id=product.product_id) }}">{{ product.product_id }}</a>
                 </td>
-                <td><a href=>Urządzenie wielofunkcyjne HP Envy 6020e AiO HP+ Instant Ink (223N4B)</a></td>
+                <td>Urządzenie wielofunkcyjne HP Envy 6020e AiO HP+ Instant Ink (223N4B)</td>
                 <td>55</td>
                 <td>37</td>
                 <td>1</td>
                 <td>4.62</td>
                 <td>
-                    <a href="opinie/produkt1.csv">CSV</a> |
-                    <a href="opinie/produkt1.xlsx">XLSX</a> |
-                    
+                    <a href="{{ product.csv_url }}">CSV</a> |
+                    <a href="{{ product.xlsx_url }}">XLSX</a>
+                    <a href="{{ product.json_url }}">JSON</a>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <a href='#'> 108481121 </a>
-                </td>
-                <td><a href=>Urządzenie wielofunkcyjne HP Envy 6020e AiO HP+ Instant Ink (223N4B)</a></td>
-                <td>55</td>
-                <td>37</td>
-                <td>1</td>
-                <td>4.62</td>
-                <td>
-                    <a href="opinie/produkt2.csv">CSV</a> |
-                    <a href="opinie/produkt2.xlsx">XLSX</a> |
-                    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href='#'> 108481121 </a>
-                </td>
-                <td><a href=>Urządzenie wielofunkcyjne HP Envy 6020e AiO HP+ Instant Ink (223N4B)</a></td>
-                <td>55</td>
-                <td>37</td>
-                <td>1</td>
-                <td>4.62</td>
-                <td>
-                    <a href="opinie/produkt3.csv">CSV</a> |
-                    <a href="opinie/produkt3.xlsx">XLSX</a> |
-                    
-                </td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </body>
