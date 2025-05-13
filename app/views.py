@@ -1,5 +1,6 @@
 import os
 import json
+import requests
 import pandas as pd
 from app import app
 from flask import render_template, redirect, url_for, request
@@ -14,7 +15,10 @@ def index():
 @app.route('/extract', methods=['post'])
 def extract_data():
     product_id = request.form.get('product_id')
-    return redirect(url_for('product', product_id=product_id))
+    url = f"https://www.ceneo.pl/{product_id}#tab=reviews"
+    response = requests.get(url)
+    print(response.status_code)
+    return redirect(url_for('products', product_id=product_id))
 
 @app.route('/extract', methods=['get'])
 def display_form():
@@ -28,7 +32,7 @@ def products():
             with open(os.path.join("./app/data/products", file), "r", encoding="utf-8") as f:
                 data = json.load(f)
                 products.append(data)
-    return render_template("products.html", products=products)
+    return render_template("product.html", products=products)
 
 @app.route('/author')
 def author():
@@ -36,12 +40,17 @@ def author():
 
 @app.route('/product/<int:product_id>')
 def product(product_id:int):
-    with open(f"./app/data/opinions/{product_id}.json", "r", encoding="UTF-8") as jf:
-        try:
-            opinions = json.load(jf)
-        except json.JSONDecodeError:
-            error = "Dla produktu o podanym id nie pobrano jeszcze opinii"
-            return render_template("product.html", error=error)
+    try:
+        with open(f"./app/data/opinions/{product_id}.json", "r", encoding="UTF-8") as jf:
+            try:
+                opinions = json.load(jf)
+            except json.JSONDecodeError:
+                error = "błędny format pliku"
+                return render_template("product.html", error=error)
+    except FileNotFoundError:
+                error = "Dla produktu o podanym id nie pobrano jeszcze opinii"
+                return render_template("product.html", error=error)
+    
     opinions = pd.DataFrame.from_dict(opinions)
     opinions.pros = opinions.pros.apply(list_to_html)
     opinions.cons = opinions.pros.apply(list_to_html)
