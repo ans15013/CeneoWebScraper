@@ -4,7 +4,7 @@ Ekstrakcja opinii o produkcie
 {% endblock %}
 
 {% block content %}
-<form class="container" method="post">
+<form class="container" method="post" action="{{url_for('extract_data')}}">
     <div class="row">
         <div class="col d-flex justify-content-end align-items-baseline">
             <label for="product_id" class="form-label">Podaj kod produktu</label>
