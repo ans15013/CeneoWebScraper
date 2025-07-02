@@ -1,13 +1,96 @@
-{% extends 'base.html' %}
-{% block title %}
-Opis projektu
-{% endblock %}
+{% extends "base.html" %} 
+{% block title %} 
+Opis projektu 
+{% endblock %} {%
+block content %}
+<style>
+  .project-description {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-family: Arial, sans-serif;
+  }
+  .project-description > li {
+    background: #f9f9f9;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .project-description h3 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+  .project-description ul {
+    padding-left: 20px;
+    margin: 10px 0 0 0;
+  }
+  .project-description ul li {
+    margin-bottom: 6px;
+  }
+  div h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-family: Arial, sans-serif;
+  }
+  div p {
+    max-width: 600px;
+    margin: 5px auto;
+    font-size: 16px;
+    color: #34495e;
+  }
+  div p strong {
+    display: inline-block;
+    width: 130px;
+  }
+  div p a {
+    color: #2980b9;
+    text-decoration: none;
+  }
+  div p a:hover {
+    text-decoration: underline;
+  }
+</style>
+<ul class="project-description">
+  <li>
+    <div>
+      <h3>Cel aplikacji</h3>
+      <p>
+        Celem aplikacji ceneoscraper jest automatyczne pobieranie danych o produktach ze strony Ceneo.pl – w szczególności nazw produktów, cen, ocen użytkowników i liczby opinii. 
+        Aplikacja może służyć do analizy rynku, porównywania cen lub budowy własnych baz danych produktowych.
+      </p>
+    </div>
 
-{% block content %}
-<ul>
-    <li>Cel aplikacji</li>
-    <li>Opis działania aplikacji</li>
-    <li>Zastosowane biblioteki</li>
-    <li>Zastosowane podejścia</li>
+    <div>
+      <h3>Opis działania aplikacji</h3>
+      <p>
+        Aplikacja działa w następujący sposób:
+        Użytkownik podaje frazę wyszukiwania (np. "laptop Lenovo").
+        Aplikacja wysyła zapytanie do Ceneo.pl i pobiera kod HTML wyników wyszukiwania.
+        Parser HTML analizuje stronę i wyciąga dane o produktach: nazwę, cenę, ocenę, liczbę opinii, link do produktu itp.
+        Dane są zapisywane w formacie CSV lub JSON albo prezentowane na ekranie.
+        Możliwa jest obsługa wielu stron wyników.
+      </p>
+    </div>
+  </li>
+
+  <li>
+    <div>
+      <h3>Zastosowane biblioteki</h3>
+      <p>
+        Wykorzystane w projekcie biblioteki to m. in.:
+        Flask, BeautifulSoup, numpy, pandas, requests.
+      </p>
+    </div>
+    <div>
+      <h3>Zastosowane podejścia</h3>
+      <p>
+        W aplikacji zastosowano podejście oparte na web scrapingu z wykorzystaniem selektorów HTML do precyzyjnego wyodrębniania danych. 
+        Dodano losowe opóźnienia między żądaniami, aby uniknąć blokady ze strony serwera i zachować zgodność z zasadami fair use. 
+        Kod został podzielony na moduły, co ułatwia jego rozwijanie, testowanie i ponowne wykorzystanie.
+      </p>
+    </div>
+  </li>
 </ul>
 {% endblock %}

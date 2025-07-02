@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Autor projektu
+{% endblock %}
+
+{% block content %}
+<style>
+  .project-description {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-family: Arial, sans-serif;
+  }
+  .project-description > li {
+    background: #f9f9f9;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .project-description h3 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+  .project-description ul {
+    padding-left: 20px;
+    margin: 10px 0 0 0;
+  }
+  .project-description ul li {
+    margin-bottom: 6px;
+  }
+  div h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-family: Arial, sans-serif;
+  }
+  div p {
+    max-width: 600px;
+    margin: 5px auto;
+    font-size: 16px;
+    color: #34495e;
+  }
+  div p strong {
+    display: inline-block;
+    width: 130px;
+  }
+  div p a {
+    color: #2980b9;
+    text-decoration: none;
+  }
+  div p a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<ul class="project-description">
+  <li>
+    <div>
+      <h3>O autorze:</h3>
+      <p>
+        Cześć, nazywam się Paweł Marek i jestem studentem pierwszego roku informatyki ekonomicznej na Akademii Nauk Stosowanych w Nowym Targu.
+      </p>
+    </div>
+  </li>
+
+  <li>
+    <div>
+      <h3>Wykształcenie</h3>
+      <ul>
+        <li>Informatyka, Politechnika Warszawska (2015-2019)</li>
+        <li>Studia podyplomowe z Data Science, Uniwersytet Warszawski (2020-2021)</li>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div>
+      <h3>Zainteresowania</h3>
+      <ul>
+        <li>Python</li>
+        <li>SQL</li>
+        <li>Analiza Danych</li>
+        <li>Sport</li>
+        <li>Historia</li>
+      </ul>
+    </div>
+  </li>
+</ul>
+
+<div>
+  <h2>Kontakt</h2>
+  <p><strong>Imię i nazwisko:</strong> Paweł Marek</p>
+  <p><strong>Telefon:</strong> +48 111 222 333</p>
+  <p><strong>E-mail:</strong> <a href="mailto:15013@eans-nt.edu.pl">15013@eans-nt.edu.pl</a></p>
+  <p><strong>Adres:</strong> ul. Kokoszków 999, 00-000 Nowy Targ</p>
+</div>
+{% endblock %}
